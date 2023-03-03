@@ -5,4 +5,8 @@ export const Container = styled.div`
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 100%;
+
+    @media (min-width: 1025px){
+        
+    }
 `

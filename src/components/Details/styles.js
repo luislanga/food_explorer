@@ -11,19 +11,25 @@ export const Container = styled.div`
 
     max-width: 31.6rem;
 
-    >h1{
-        font-weight: 500;
-        font-size: 2.7rem;
-        line-height: 140%;
-        margin: 1.6rem 0 2.4rem;
-    }
+    .bottomContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        >h1{
+            font-weight: 500;
+            font-size: 2.7rem;
+            line-height: 140%;
+            margin: 1.6rem 0 2.4rem;
+        }
 
-    >p{
-        font-weight: 400;
-        font-size: 1.6rem;
-        line-height: 140%;
-        margin-bottom: 2.4rem;
-        text-align: center;
+        >p{
+            font-weight: 400;
+            font-size: 1.6rem;
+            line-height: 140%;
+            margin-bottom: 2.4rem;
+            text-align: center;
+        }
     }
 
     >img{
@@ -74,6 +80,37 @@ export const Container = styled.div`
             font-family: var(--ff-secondary);
             font-weight: 700;
             font-size: 2.3rem;
+        }
+    }
+
+    @media (min-width: 1025px){
+        min-width: 100%;
+        height: 100%;
+        flex-direction: row;
+        gap: 4.8rem;
+
+        >img{
+            height: 39rem;
+            width: 39rem;
+        }
+
+        .bottomContainer{
+            align-items: start;
+            >h1{
+                font-size: 4rem;
+            }
+
+            >p{
+                text-align: start;
+                font-size: 2.4rem;
+            }
+        }
+
+        .addDish{
+            max-width: 30rem;
+            >button{
+                font-size: 1.4rem;
+            }
         }
     }
 

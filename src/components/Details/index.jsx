@@ -26,36 +26,38 @@ export function Details() {
     return(
         <Container>
             <img src={DishLarge} alt="" />
-            <h1>Salada Ravanello</h1>
-            <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
-            <div className="tags">            
-                <Tag>
-                    alface
-                </Tag>
-                <Tag>
-                    cebola
-                </Tag>
-                <Tag>
-                    pão naan
-                </Tag>
-                <Tag>
-                    pepino
-                </Tag>
-                <Tag>
-                    rabanete
-                </Tag>
-            </div>
-            <div className="addDish">
-                <div className="adder">
-                <button onClick={handleSubtract}>
-                    <img  src={Minus} alt="Remover unidade" />
-                </button>
-                <span>{dishCount}</span>
-                <button onClick={handleAdd}>
-                    <img src={Plus} alt="Adicionar unidade" />
-                </button>
+            <div className="bottomContainer">
+                <h1>Salada Ravanello</h1>
+                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.</p>
+                <div className="tags">            
+                    <Tag>
+                        alface
+                    </Tag>
+                    <Tag>
+                        cebola
+                    </Tag>
+                    <Tag>
+                        pão naan
+                    </Tag>
+                    <Tag>
+                        pepino
+                    </Tag>
+                    <Tag>
+                        rabanete
+                    </Tag>
                 </div>
-                <Button icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
+                <div className="addDish">
+                    <div className="adder">
+                    <button onClick={handleSubtract}>
+                        <img  src={Minus} alt="Remover unidade" />
+                    </button>
+                    <span>{dishCount}</span>
+                    <button onClick={handleAdd}>
+                        <img src={Plus} alt="Adicionar unidade" />
+                    </button>
+                    </div>
+                    <Button icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
+                </div>
             </div>
         </Container>
     )
