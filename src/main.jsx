@@ -6,10 +6,9 @@ import GlobalStyle from './styles/global'
 import { App } from './pages/App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <ThemeProvider theme={theme}>
       <GlobalStyle />
         <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+    </ThemeProvider>,
 )

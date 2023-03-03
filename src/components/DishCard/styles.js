@@ -94,8 +94,8 @@ export const Container = styled.div`
     }
 
     @media (min-width: 1025px){
-
         min-width: 304px;
+        max-width: 304px;
         height: 462px;
         gap: 1.5rem;
 
@@ -115,12 +115,16 @@ export const Container = styled.div`
         }
         
         p{
-            display: block;
             color: var(--tx-secondary);
             font-family: var(--ff-secondary);
             font-size: 1.4rem;
             line-height: 160%;
             text-align: center;
+
+            display: -webkit-box;   
+            -webkit-line-clamp: 2;   
+            -webkit-box-orient: vertical;     
+            overflow: hidden; 
         }
         
         >span{
