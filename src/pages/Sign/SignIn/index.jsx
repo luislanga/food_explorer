@@ -2,6 +2,7 @@ import { Container, LogForm } from "./styles";
 import { Input } from "../../../components/Input";
 import { Button } from "../../../components/Button";
 import { Logo } from "../../../components/Logo";
+import { Link } from "react-router-dom";
 
 export function SignIn(){
     return(
@@ -17,10 +18,10 @@ export function SignIn(){
                 </div>
                 <div>
                     <h2>Senha</h2>
-                    <Input placeholder="No mínimo 6 caracteres"/>
+                    <Input type="password" placeholder="No mínimo 6 caracteres"/>
                 </div>
                 <Button title="Entrar"/>
-                <a href="">Criar uma conta</a>
+                <Link to="/register">Criar uma conta</Link>
             </LogForm>
         </Container>
     )
