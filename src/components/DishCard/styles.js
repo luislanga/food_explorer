@@ -54,7 +54,7 @@ export const Container = styled.div`
         gap: 2rem;
         
         >button{
-            height: 32px;
+            height: 3.2rem;
         }
     }
 
@@ -80,6 +80,7 @@ export const Container = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 1.8rem;
             cursor: pointer;
             
         }

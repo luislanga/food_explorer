@@ -1,7 +1,7 @@
 import { Container, LogForm } from "./styles";
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
-import { Logo } from "../../components/Logo";
+import { Input } from "../../../components/Input";
+import { Button } from "../../../components/Button";
+import { Logo } from "../../../components/Logo";
 
 export function SignIn(){
     return(
