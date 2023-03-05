@@ -100,6 +100,11 @@ export const Container = styled.div`
         height: 462px;
         gap: 1.5rem;
 
+        .dishImage{
+            width: 176px;
+            height: 176px;
+        }
+
         h2{
             font-weight: 700;
             font-size: 2.4rem;
@@ -121,6 +126,7 @@ export const Container = styled.div`
             font-size: 1.4rem;
             line-height: 160%;
             text-align: center;
+            padding-bottom: 1rem;
 
             display: -webkit-box;   
             -webkit-line-clamp: 2;   

@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 import { Button } from "../Button";
 import { useState, useEffect } from "react";
+import { api } from "../../services/api";
 import dish from "../../assets/icons/Dish.png"
 import minus from "../../assets/icons/Minus.svg"
 import plus from "../../assets/icons/Plus.svg"
@@ -8,11 +9,9 @@ import heart from "../../assets/icons/Heart.svg"
 import heartRed from "../../assets/icons/HeartRed.svg"
 
 export function DishCard({isAdmin, fetchedDish}) {
+    const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
     const [dishCount, setDishCount] = useState(1)
     const [isFavorite, setIsFavorite] = useState(false)
-
-
-
 
     function handleAdd(){
         if(dishCount < 99){
@@ -32,7 +31,7 @@ export function DishCard({isAdmin, fetchedDish}) {
 
     return(
         <Container>
-            {fetchedDish && <img src={dish} alt="" />}
+            {fetchedDish && <img className="dishImage" src={imageUrl} alt="" />}
             <div id="dishTitle">
                 {fetchedDish && <h2>{fetchedDish.name}</h2>}
                 <h2 id="titleArrow">&gt;</h2>
