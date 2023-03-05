@@ -7,9 +7,11 @@ import minus from "../../assets/icons/Minus.svg"
 import plus from "../../assets/icons/Plus.svg"
 import heart from "../../assets/icons/Heart.svg"
 import heartRed from "../../assets/icons/HeartRed.svg"
+import { Link } from "react-router-dom";
 
 export function DishCard({isAdmin, fetchedDish}) {
     const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
+    const dishDetailUrl = `/details/${fetchedDish.id}`
     const [dishCount, setDishCount] = useState(1)
     const [isFavorite, setIsFavorite] = useState(false)
 
@@ -33,7 +35,7 @@ export function DishCard({isAdmin, fetchedDish}) {
         <Container>
             {fetchedDish && <img className="dishImage" src={imageUrl} alt="" />}
             <div id="dishTitle">
-                {fetchedDish && <h2>{fetchedDish.name}</h2>}
+                {fetchedDish && <Link to={dishDetailUrl}><h2>{fetchedDish.name}</h2></Link>}
                 <h2 id="titleArrow">&gt;</h2>
             </div>
             {fetchedDish && <p>{fetchedDish.description}</p>}
