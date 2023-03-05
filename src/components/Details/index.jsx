@@ -5,10 +5,13 @@ import Receipt from "../../assets/icons/Receipt.svg"
 import Plus from "../../assets/icons/Plus.svg"
 import Minus from "../../assets/icons/Minus.svg"
 import DishLarge from "../../assets/icons/DishLarge.png"
+import { api } from "../../services/api"
 
-export function Details() {
+export function Details({fetchedDish}) {
+    const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
+
     const [dishCount, setDishCount] = useState(1)
-    const unitPrice = 25
+    const unitPrice = fetchedDish.price
     const currentPrice = (unitPrice*dishCount).toFixed(2).toString().replace('.',',');
     
     function handleAdd() {
@@ -25,26 +28,16 @@ export function Details() {
 
     return(
         <Container>
-            <img src={DishLarge} alt="" />
+            <img src={imageUrl} alt="" />
             <div className="bottomContainer">
-                <h1>Salada Ravanello</h1>
-                <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.</p>
-                <div className="tags">            
-                    <Tag>
-                        alface
-                    </Tag>
-                    <Tag>
-                        cebola
-                    </Tag>
-                    <Tag>
-                        pão naan
-                    </Tag>
-                    <Tag>
-                        pepino
-                    </Tag>
-                    <Tag>
-                        rabanete
-                    </Tag>
+                <h1>{fetchedDish.name}</h1>
+                <p>{fetchedDish.description}</p>
+                <div className="tags">
+                    {fetchedDish.ingredients.map(ingredient => {
+                        return(
+                            <Tag key={ingredient.id}>{ingredient.name}</Tag>
+                        )
+                    })}            
                 </div>
                 <div className="addDish">
                     <div className="adder">
