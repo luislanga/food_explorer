@@ -1,14 +1,18 @@
 import { Container } from "./styles";
 import menu from "../../assets/icons/Menu.svg"
 import receipt from "../../assets/icons/Receipt.svg"
-import signOut from "../../assets/icons/SignOut.svg"
+import signOutIcon from "../../assets/icons/SignOut.svg"
 import search from "../../assets/icons/search.svg"
 import { Logo } from "../../components/Logo"
 import { Input } from "../../components/Input"
 import { Button } from "../Button";
+import { useAuth } from "../../hooks/auth";
  
 export function Navbar(){
     const pedidos = 20
+
+    const { signOut } = useAuth()
+
     return(
         <Container>
             <img id="hamburgerMenu" src={menu} alt="Menu" />
@@ -16,7 +20,9 @@ export function Navbar(){
             <div id="desktopNav">
                 <Input placeholder="Pesquisar" icon={search}/>
                 <Button title={`Pedidos (${pedidos})`} icon={receipt}/>
-                <img id="signOutIcon" src={signOut} alt="Sair" />
+                <button onClick={signOut} className="signout">
+                    <img id="signOutIcon" src={signOutIcon} alt="Sair" />
+                </button>
             </div>
             <a href="" className="orders">
                 <img src={receipt} alt="Pedidos" />

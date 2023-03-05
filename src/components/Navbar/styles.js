@@ -76,14 +76,22 @@ export const Container = styled.nav`
             gap: 3.2rem;
             padding-right: 6rem;
             button{
-                min-width: 216px;
-                max-width: 216px;
+                min-width: 21.6rem;
+                max-width: 21.6rem;
                 height: 5.6rem;
             }
             input{
                 height: 4.8rem;
             }          
+            .signout{
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+                min-width: 3.3rem;
+                max-width: 3.3rem;
+            }
         }
+
 
         #hamburgerMenu, .orders{
             display: none;
