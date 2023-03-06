@@ -99,14 +99,22 @@ export const Container = styled.nav`
             position: relative;
         }
         .searchModal{
-            z-index: 1;
-            width: 100%;
-            position: absolute;
-            border-radius: 5px;
-            background-color: rgba(200,200,200,0.4);
-            backdrop-filter: blur(15px);
-            top: 6rem;
-            padding: 1.5rem;
+                z-index: 1;
+                width: 100%;
+                min-width: 450px;
+                position: absolute;
+                border-radius: 5px;
+                background-color: rgba(200,195,200,0.7);
+                backdrop-filter: blur(12px);
+                top: 6rem;
+                padding: 1.5rem;
+        }
+
+        .notFound{
+            font-size: 1.4rem;
+            color: var(--tx-main);
+            font-family: var(--ff-main);
+            font-weight: 500;
         }
 
         .searchModalHidden{

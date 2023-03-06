@@ -27,27 +27,52 @@ export function Navbar({onClick}){
         }
     },[searchWord])
 
-    const pedidos = 20
     const { signOut } = useAuth()
+
+    const pedidos = 20
 
     return(
         <Container>
-            <img onClick={onClick} id="hamburgerMenu" src={menu} alt="Menu" />
+            <img 
+                onClick={onClick}
+                id="hamburgerMenu" 
+                src={menu} 
+                alt="Menu" 
+            />
             <Logo />
             <div id="desktopNav">
                 <div className="searchBar">
-                    <Input placeholder="Pesquisar" icon={search} onChange={(e) => setSearchWord(e.target.value)}/>
-                    <div className={searchWord !== "" ? "searchModal" : "searchModal searchModalHidden"}>
-                        {dishes && dishes.map(dish => {
-                                return <SearchItem key={dish.id} fetchedDish={dish}/>
-                                }
-                            )
+                    <Input
+                        placeholder="Pesquisar" 
+                        icon={search} 
+                        onChange={(e) => setSearchWord(e.target.value)}
+                    />
+                    <div 
+                        className={searchWord !== "" ? 
+                            "searchModal" : 
+                            "searchModal searchModalHidden"}
+                    >
+                        {dishes.length ? dishes.map(dish => {
+                                    return <SearchItem key={dish.id} fetchedDish={dish}/>
+                                }) : <span className="notFound"> 
+                                        Nenhum item encontrado 
+                                    </span>
                         }  
                     </div>
                 </div>
-                <Button title={`Pedidos (${pedidos})`} icon={receipt}/>
-                <button onClick={signOut} className="signout">
-                    <img id="signOutIcon" src={signOutIcon} alt="Sair" />
+                <Button 
+                    title={`Pedidos (${pedidos})`}
+                    icon={receipt}
+                />
+                <button
+                    onClick={signOut} 
+                    className="signout"
+                >
+                    <img 
+                        id="signOutIcon" 
+                        src={signOutIcon} 
+                        alt="Sair" 
+                    />
                 </button>
             </div>
             <a href="" className="orders">
