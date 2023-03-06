@@ -8,14 +8,14 @@ import { Input } from "../../components/Input"
 import { Button } from "../Button";
 import { useAuth } from "../../hooks/auth";
  
-export function Navbar(){
+export function Navbar({onClick}){
     const pedidos = 20
 
     const { signOut } = useAuth()
 
     return(
         <Container>
-            <img id="hamburgerMenu" src={menu} alt="Menu" />
+            <img onClick={onClick} id="hamburgerMenu" src={menu} alt="Menu" />
             <Logo />
             <div id="desktopNav">
                 <Input placeholder="Pesquisar" icon={search}/>

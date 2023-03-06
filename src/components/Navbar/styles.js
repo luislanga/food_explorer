@@ -19,6 +19,8 @@ export const Container = styled.nav`
     #hamburgerMenu{
         height: 1.8rem;
         width: 2.4rem;
+
+        cursor: pointer;
         
     }
 

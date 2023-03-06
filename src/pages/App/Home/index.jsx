@@ -30,31 +30,29 @@ export function Home(){
             setCategories(uniqueCategories)
         }
     },[dishes])
-    
-    
+        
     return (
         <Container>
             <Hero />
             <div className="featured">
-
                 {
-                categories && categories.map((category) => {
-                    return(
-                        <Gallery key={category} title={category}>
-                            { 
-                                dishes.map((dish) => {
-                                    for (let i = 0; i < dish.dishCategories.length; i++) {
-                                        if(dish.dishCategories[i].name === category){
-                                            return(
-                                                <DishCard key={dish.id} fetchedDish={dish}/>
-                                            )
-                                        } 
-                                    }
-                                })
-                            }
-                </Gallery>
-                    )
-                })
+                    categories && categories.map((category) => {
+                        return(
+                            <Gallery key={category} title={category}>
+                                { 
+                                    dishes.map((dish) => {
+                                        for (let i = 0; i < dish.dishCategories.length; i++) {
+                                            if(dish.dishCategories[i].name === category){
+                                                return(
+                                                    <DishCard key={dish.id} fetchedDish={dish}/>
+                                                )
+                                            } 
+                                        }
+                                    })
+                                }
+                            </Gallery>
+                        )
+                    })
                 }
 
             </div>
