@@ -10,12 +10,12 @@ export const Container = styled.nav`
 
     background-color: var(--bg-dark-700);
 
-
     #desktopNav{
             display: none;
     }
 
-
+    
+    
     #hamburgerMenu{
         height: 1.8rem;
         width: 2.4rem;
@@ -23,11 +23,11 @@ export const Container = styled.nav`
         cursor: pointer;
         
     }
-
+    
     input, button, #signOutIcon{
         
     }
-
+    
     .logo{
         justify-content: center;
         gap:8px;
@@ -39,19 +39,19 @@ export const Container = styled.nav`
         }
         
     }
-
+    
     .orders{
         position: relative;
         height: 3.8rem;
         min-width: 3.8rem;
         
-
+        
         >img{
             position: absolute;
             bottom: 8px;
             left: 3px;
         }
-
+        
         >span{
             position: absolute;
             background-color: var(--bg-button);
@@ -61,14 +61,14 @@ export const Container = styled.nav`
             border-radius: 50%;
             top: -3px;
             right: 0px;
-
+            
             font-size: 1.4rem;
             color: var(--tx-main);
             font-family: var(--ff-main);
             font-weight: 500;
         }
     }
-
+    
     @media (min-width: 1025px){
         
         #desktopNav{
@@ -93,8 +93,32 @@ export const Container = styled.nav`
                 max-width: 3.3rem;
             }
         }
+        
+        .searchBar{
+            width: 100%;
+            position: relative;
+        }
+        .searchModal{
+            z-index: 1;
+            width: 100%;
+            position: absolute;
+            border-radius: 5px;
+            background-color: rgba(200,200,200,0.4);
+            backdrop-filter: blur(15px);
+            top: 6rem;
+            padding: 1.5rem;
+        }
 
+        .searchModalHidden{
+            display: none;
+        }
 
+        .searchItem + .searchItem{
+            border-top: 1px solid gray;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
         #hamburgerMenu, .orders{
             display: none;
         }

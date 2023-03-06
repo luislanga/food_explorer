@@ -4,13 +4,30 @@ import receipt from "../../assets/icons/Receipt.svg"
 import signOutIcon from "../../assets/icons/SignOut.svg"
 import search from "../../assets/icons/search.svg"
 import { Logo } from "../../components/Logo"
+import { SearchItem } from "../SearchItem";
 import { Input } from "../../components/Input"
 import { Button } from "../Button";
 import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api"
+import { useState, useEffect } from "react"
  
 export function Navbar({onClick}){
-    const pedidos = 20
+    const [dishes, setDishes] = useState("")
+    const [searchWord, setSearchWord] = useState("")
 
+    useEffect(() => {
+        if(searchWord !== ""){
+            async function getDishes(){
+                const results = await api.get(`/dishes?nameOrIngredient=${searchWord}`)
+                setDishes(results.data)
+            }
+            getDishes()
+        }else{
+            setDishes("")
+        }
+    },[searchWord])
+
+    const pedidos = 20
     const { signOut } = useAuth()
 
     return(
@@ -18,7 +35,16 @@ export function Navbar({onClick}){
             <img onClick={onClick} id="hamburgerMenu" src={menu} alt="Menu" />
             <Logo />
             <div id="desktopNav">
-                <Input placeholder="Pesquisar" icon={search}/>
+                <div className="searchBar">
+                    <Input placeholder="Pesquisar" icon={search} onChange={(e) => setSearchWord(e.target.value)}/>
+                    <div className={searchWord !== "" ? "searchModal" : "searchModal searchModalHidden"}>
+                        {dishes && dishes.map(dish => {
+                                return <SearchItem key={dish.id} fetchedDish={dish}/>
+                                }
+                            )
+                        }  
+                    </div>
+                </div>
                 <Button title={`Pedidos (${pedidos})`} icon={receipt}/>
                 <button onClick={signOut} className="signout">
                     <img id="signOutIcon" src={signOutIcon} alt="Sair" />
