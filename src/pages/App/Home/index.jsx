@@ -38,13 +38,19 @@ export function Home(){
                 {
                     categories && categories.map((category) => {
                         return(
-                            <Gallery key={category} title={category}>
+                            <Gallery
+                            key={category} 
+                            title={category}
+                            >
                                 { 
                                     dishes.map((dish) => {
                                         for (let i = 0; i < dish.dishCategories.length; i++) {
-                                            if(dish.dishCategories[i].name === category){
+                                            if(dish && dish.dishCategories[i].name === category){
                                                 return(
-                                                    <DishCard key={dish.id} fetchedDish={dish}/>
+                                                    <DishCard
+                                                        key={dish.id} 
+                                                        fetchedDish={dish}
+                                                    />
                                                 )
                                             } 
                                         }

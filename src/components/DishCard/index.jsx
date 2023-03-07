@@ -32,14 +32,18 @@ export function DishCard({isAdmin, fetchedDish}) {
 
     return(
         <Container>
-            {fetchedDish && <img className="dishImage" src={imageUrl} alt="" />}
+            <img 
+                className="dishImage" 
+                src={imageUrl} 
+            />
             <div id="dishTitle">
-                {fetchedDish && <a href={dishDetailUrl}><h2>{fetchedDish.name}</h2></a>}
+                <a href={dishDetailUrl}>
+                    <h2>{fetchedDish.name}</h2>
+                </a>
                 <h2 id="titleArrow">&gt;</h2>
             </div>
-            {fetchedDish && <p>{fetchedDish.description}</p>}
-            {fetchedDish && <span>R$ {(fetchedDish.price).toFixed(2).toString().replace('.',',')}</span>}
-
+            <p>{fetchedDish.description}</p>
+            <span>R$ {(fetchedDish.price).toFixed(2).toString().replace('.',',')}</span>
             <div>
                 <div className="dishAdder">
                     <button onClick={handleSubtract}>
