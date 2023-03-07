@@ -93,6 +93,14 @@ export const Container = styled.nav`
                 max-width: 3.3rem;
             }
         }
+
+        .favorites{
+            font-family: var(--ff-main);
+            font-weight: 400;
+            font-size: 1.6rem;
+            color: var(--tx-secondary);
+            min-width: 12rem;
+        }
         
         .searchBar{
             width: 100%;

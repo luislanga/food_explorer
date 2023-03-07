@@ -8,6 +8,16 @@ import { api } from "../../../services/api"
 export function Home(){
     const [dishes, setDishes] = useState([])
     const [categories, setCategories] = useState([])
+    const [favorites, setFavorites] = useState([])
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
+
+    useEffect(() => {
+        async function getFavorites(){
+            const results = await api.get(`favorites/${user.id}`)
+            setFavorites(results.data)
+        }
+        getFavorites()
+    },[])
 
     useEffect(() => {
         async function getDishes(){
@@ -29,7 +39,14 @@ export function Home(){
             let uniqueCategories = [...new Set(categoryArr)]
             setCategories(uniqueCategories)
         }
-    },[dishes])
+        for (let i = 0; i < dishes.length; i++) {
+            for (let j = 0; j < favorites.length; j++) {
+                if(dishes[i].id === favorites[j].dish_id){
+                    dishes[i] = {...dishes[i], isFavorite: true}
+                }    
+            }    
+        }
+    },[dishes, favorites])
         
     return (
         <Container>

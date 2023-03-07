@@ -54,6 +54,7 @@ export function App(){
                 <div className="menuContent">
                     <SearchBar />
                     <div className="menuLinks">
+                        <a href="/favorites">Meus favoritos</a>
                         <button onClick={signOut}>Sair</button>
                     </div>
                 </div>

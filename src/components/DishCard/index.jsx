@@ -12,8 +12,9 @@ export function DishCard({isAdmin, fetchedDish}) {
     const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
     const dishDetailUrl = `/details/${fetchedDish.id}`
     const [dishCount, setDishCount] = useState(1)
-    const [isFavorite, setIsFavorite] = useState(false)
-
+    const [toggle, setToggle] = useState(false)
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))    
+    
     function handleAdd(){
         if(dishCount < 99){
             setDishCount(prev => ++prev)
@@ -25,10 +26,19 @@ export function DishCard({isAdmin, fetchedDish}) {
             setDishCount(prev => --prev)
         }
     }
-
-    function handleIsFavorite(){
-        setIsFavorite(prev => !prev)
+  
+    async function handleIsFavorite(){
+        if(fetchedDish.isFavorite){
+            await api.delete(`favorites/${user.id}`,{ data: {dish_id: fetchedDish.id}})
+            fetchedDish.isFavorite = false;
+        }else{
+            await api.post(`favorites/${user.id}`,{ dish_id: fetchedDish.id})
+            fetchedDish.isFavorite = true;
+        }
+        setToggle(prev => !prev)
     }
+
+    useEffect(()=>{},[fetchedDish.isFavorite])
 
     return(
         <Container>
@@ -58,7 +68,7 @@ export function DishCard({isAdmin, fetchedDish}) {
 
             </div>
                 <button onClick={handleIsFavorite} className="favoriteButton">
-                    <img src={isFavorite ? heartRed : heart} alt="Favorito" />
+                    <img src={fetchedDish.isFavorite ? heartRed : heart} alt="Favorito" />
                 </button>
         </Container>
     )

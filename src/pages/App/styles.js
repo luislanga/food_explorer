@@ -58,17 +58,26 @@ export const Container = styled.div`
         height: 4.8rem;
     }
 
-    .menuLinks{
+    .menuLinks, >button{
         margin-top: 3.6rem;
         >button{
+            font-family: var(--ff-main);
             color: var(--tx-secondary);
             background-color: transparent;
-            font-family: var(--ff-main);
             font-size: 2.4rem;
             width: 100%;
             text-align: start;
             padding: 1rem;
             border: none;
+            cursor: pointer;
+        }
+
+        >a{
+            color: var(--tx-secondary);
+            font-family: var(--ff-main);
+            font-size: 2.4rem;
+            width: 100%;
+            padding: 1rem;
             cursor: pointer;
         }
     }

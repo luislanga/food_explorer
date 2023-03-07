@@ -64,6 +64,7 @@ export function Navbar({onClick}){
                     title={`Pedidos (${pedidos})`}
                     icon={receipt}
                 />
+                <a className="favorites" href="/favorites">Meus Favoritos</a>
                 <button
                     onClick={signOut} 
                     className="signout"
