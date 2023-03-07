@@ -7,6 +7,7 @@ import search from "../../assets/icons/search.svg"
 import { useAuth } from "../../hooks/auth"
 import { Outlet } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { SearchBar } from "../../components/SearchBar"
 
 
 export function App(){
@@ -51,9 +52,7 @@ export function App(){
                     <span>Menu</span>
                 </div>
                 <div className="menuContent">
-                    <div className="searchInput">
-                        <Input icon={search} placeholder="Busque por pratos ou ingredientes"/>
-                    </div>
+                    <SearchBar />
                     <div className="menuLinks">
                         <button onClick={signOut}>Sair</button>
                     </div>

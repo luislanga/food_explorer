@@ -108,6 +108,8 @@ export const Container = styled.nav`
                 backdrop-filter: blur(12px);
                 top: 6rem;
                 padding: 1.5rem;
+                max-height: 40rem;
+                overflow: scroll;
         }
 
         .notFound{

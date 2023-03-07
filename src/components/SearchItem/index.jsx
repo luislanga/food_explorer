@@ -8,7 +8,7 @@ export function SearchItem({fetchedDish}){
     return(
         <Container className="searchItem">
             <a href={dishUrl} className="itemContainer">
-                <img src={imageUrl}/>
+                <img className="dishImage" src={imageUrl}/>
                 <div>
                     <span className="title">{fetchedDish.name}</span>
                     <span>{`R$ ${(fetchedDish.price).toFixed(2).toString().replace('.',',')}`}</span>
