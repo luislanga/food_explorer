@@ -110,6 +110,18 @@ export const Container = styled.nav`
                 padding: 1.5rem;
                 max-height: 40rem;
                 overflow: scroll;
+
+                ::-webkit-scrollbar{
+                     display: none;
+                 }
+
+                ::-webkit-scrollbar:vertical{
+                    all: unset;
+                    width: 4px;
+                }
+                ::-webkit-scrollbar-thumb {
+                    background: var(--bg-dark-1000);
+                }
         }
 
         .notFound{

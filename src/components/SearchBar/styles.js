@@ -29,6 +29,17 @@ export const Container = styled.div`
                 max-height: 28rem;
                 background-color: rgba(200,195,200,0.7);
                 overflow: scroll;    
+                ::-webkit-scrollbar{
+                     display: none;
+                 }
+
+                ::-webkit-scrollbar:vertical{
+                    all: unset;
+                    width: 4px;
+                }
+                ::-webkit-scrollbar-thumb {
+                    background: var(--bg-dark-1000);
+                }
     }
 
     .searchModalHidden{
