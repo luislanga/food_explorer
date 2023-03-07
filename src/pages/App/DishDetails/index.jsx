@@ -3,7 +3,7 @@ import { Details } from "../../../components/Details"
 import caretLeft from "../../../assets/icons/CaretLeft.svg"
 import { api } from "../../../services/api"
 import { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 export function DishDetails(){
     const { id } = useParams()
@@ -18,10 +18,10 @@ export function DishDetails(){
 
     return (
         <Container>
-            <Link to="/">
+            <a href="/">
                 <img src={caretLeft} alt="" />
                 <h2>voltar</h2>
-            </Link>
+            </a>
             <div className="detailsContainer">
                 {dish !== "" && <Details fetchedDish={dish} />}
             </div>

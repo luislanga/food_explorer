@@ -2,12 +2,11 @@ import { Container } from "./styles";
 import { Button } from "../Button";
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
-import dish from "../../assets/icons/Dish.png"
 import minus from "../../assets/icons/Minus.svg"
 import plus from "../../assets/icons/Plus.svg"
 import heart from "../../assets/icons/Heart.svg"
 import heartRed from "../../assets/icons/HeartRed.svg"
-import { Link } from "react-router-dom";
+
 
 export function DishCard({isAdmin, fetchedDish}) {
     const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
@@ -35,7 +34,7 @@ export function DishCard({isAdmin, fetchedDish}) {
         <Container>
             {fetchedDish && <img className="dishImage" src={imageUrl} alt="" />}
             <div id="dishTitle">
-                {fetchedDish && <Link to={dishDetailUrl}><h2>{fetchedDish.name}</h2></Link>}
+                {fetchedDish && <a href={dishDetailUrl}><h2>{fetchedDish.name}</h2></a>}
                 <h2 id="titleArrow">&gt;</h2>
             </div>
             {fetchedDish && <p>{fetchedDish.description}</p>}
