@@ -5,15 +5,20 @@ import { api } from "../../services/api";
 import minus from "../../assets/icons/Minus.svg"
 import plus from "../../assets/icons/Plus.svg"
 import heart from "../../assets/icons/Heart.svg"
+import pencil from "../../assets/icons/Pencil.svg"
 import heartRed from "../../assets/icons/HeartRed.svg"
 
 
-export function DishCard({isAdmin, fetchedDish}) {
+export function DishCard({fetchedDish}) {
     const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
     const dishDetailUrl = `/details/${fetchedDish.id}`
     const [dishCount, setDishCount] = useState(1)
     const [toggle, setToggle] = useState(false)
-    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))    
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
+    let isAdmin = 0
+    if(user){
+        isAdmin = user.id
+    }    
     
     function handleAdd(){
         if(dishCount < 99){
@@ -54,22 +59,32 @@ export function DishCard({isAdmin, fetchedDish}) {
             </div>
             <p>{fetchedDish.description}</p>
             <span>R$ {(fetchedDish.price).toFixed(2).toString().replace('.',',')}</span>
-            <div>
-                <div className="dishAdder">
-                    <button onClick={handleSubtract}>
-                        <img src={minus} alt="Remover uma unidade" />
-                    </button>
-                    <span>{dishCount}</span>
-                    <button onClick={handleAdd}>
-                        <img src={plus} alt="Adicionar uma unidade" />
-                    </button>
-                </div>
-                <Button title="incluir" />
+            {
+                isAdmin === 1 ? 
+                    <></> : 
+                    <div>
+                        <div className="dishAdder">
+                            <button onClick={handleSubtract}>
+                                <img src={minus} alt="Remover uma unidade" />
+                            </button>
+                            <span>{dishCount}</span>
+                            <button onClick={handleAdd}>
+                                <img src={plus} alt="Adicionar uma unidade" />
+                            </button>
+                        </div>
+                        <Button title="incluir" />
+                    </div>
+            }
 
-            </div>
-                <button onClick={handleIsFavorite} className="favoriteButton">
-                    <img src={fetchedDish.isFavorite ? heartRed : heart} alt="Favorito" />
-                </button>
+            {   
+                isAdmin === 1 ? 
+                    <button className="favoriteButton">
+                        <img src={pencil} alt="Favorito" />
+                    </button> :
+                    <button onClick={handleIsFavorite} className="favoriteButton">
+                        <img src={fetchedDish.isFavorite ? heartRed : heart} alt="Favorito" />
+                    </button>
+            }
         </Container>
     )
 }

@@ -3,6 +3,7 @@ import { App } from "../pages/App";
 import { Home } from "../pages/App/Home";
 import { DishDetails } from "../pages/App/DishDetails";
 import { Favorites } from "../pages/App/Favorites";
+import { AddDish } from "../pages/App/AddDish";
 
 
 export function AppRoutes(){
@@ -12,6 +13,7 @@ export function AppRoutes(){
                 <Route path="/" element={<Home/>} />
                 <Route path="/details/:id" element={<DishDetails/>} />
                 <Route path="/favorites" element={<Favorites/>} />
+                <Route path="/adddish" element={<AddDish/>} />
 
             </Route>
         </Routes>

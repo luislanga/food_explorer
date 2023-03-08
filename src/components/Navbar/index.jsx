@@ -12,6 +12,12 @@ import { api } from "../../services/api"
 import { useState, useEffect } from "react"
  
 export function Navbar({onClick}){
+
+    let isAdmin = 0
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
+    if(user){
+        isAdmin = user.id
+    }
     const [dishes, setDishes] = useState("")
     const [searchWord, setSearchWord] = useState("")
 
@@ -60,11 +66,14 @@ export function Navbar({onClick}){
                         }  
                     </div>
                 </div>
-                <Button 
-                    title={`Pedidos (${pedidos})`}
-                    icon={receipt}
-                />
                 <a className="favorites" href="/favorites">Meus Favoritos</a>
+                {isAdmin === 1 ? 
+                    <a className="newDishButton" href="/adddish">Novo Prato</a> :
+                    <Button 
+                        title={`Pedidos (${pedidos})`}
+                        icon={receipt}
+                    />
+                }
                 <button
                     onClick={signOut} 
                     className="signout"

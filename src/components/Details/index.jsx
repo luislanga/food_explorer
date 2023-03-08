@@ -8,8 +8,12 @@ import DishLarge from "../../assets/icons/DishLarge.png"
 import { api } from "../../services/api"
 
 export function Details({fetchedDish}) {
+    let isAdmin = 0
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
+    if(user){
+        isAdmin = user.id
+    }
     const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
-
     const [dishCount, setDishCount] = useState(1)
     const unitPrice = fetchedDish.price
     const currentPrice = (unitPrice*dishCount).toFixed(2).toString().replace('.',',');
@@ -40,16 +44,22 @@ export function Details({fetchedDish}) {
                     })}            
                 </div>
                 <div className="addDish">
-                    <div className="adder">
-                    <button onClick={handleSubtract}>
-                        <img  src={Minus} alt="Remover unidade" />
-                    </button>
-                    <span>{dishCount}</span>
-                    <button onClick={handleAdd}>
-                        <img src={Plus} alt="Adicionar unidade" />
-                    </button>
-                    </div>
-                    <Button icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
+                    { isAdmin === 1 ?
+                        <></> : 
+                        <div className="adder">
+                            <button onClick={handleSubtract}>
+                                <img  src={Minus} alt="Remover unidade" />
+                            </button>
+                            <span>{dishCount}</span>
+                            <button onClick={handleAdd}>
+                                <img src={Plus} alt="Adicionar unidade" />
+                            </button>
+                        </div> 
+                    }
+                    { isAdmin === 1 ? 
+                        <Button title="Editar Prato" /> : 
+                        <Button icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
+                    }
                 </div>
             </div>
         </Container>
