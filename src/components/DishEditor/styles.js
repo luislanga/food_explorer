@@ -39,7 +39,7 @@ export const Container = styled.div`
         flex-direction: column;
         gap: 1.6rem;
         
-        select, input{
+        >select, >input{
             height: 4.8rem;
             color: var(--tx-input);
             background-color: var(--bg-dark-800);
@@ -77,29 +77,22 @@ export const Container = styled.div`
         }
         button{
             background-color: transparent;
-            border: none;
-            width: 1rem;
-            color: white;
+            border: none;          
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
-            width: 100%
+            width: 100%;
+            >img{
+                height: .8rem;
+                width: .8rem;
+            }
         }
     }
 
     .price{
         width: 25rem;
-    }
-
-    .tag{
-        background-color: var(--bg-ingredient);
-        color: var(--tx-main);
-    }
-
-    .newTag{
-        border: 1px dashed var(--tx-secondary);;
     }
 
     .ingredients{
@@ -126,6 +119,29 @@ export const Container = styled.div`
         height: 4.8rem;
         width: 17.2rem;
         align-self: end;
+    }
+
+    .hidden{
+        display: none;
+    }
+
+    .uploadIcon{
+        transform: rotate(270deg)
+    }
+
+    label{
+        display: flex;
+        align-items: center;
+        background-color: var(--bg-dark-800);
+        height: 4.8rem;
+        border-radius: 5px;
+        padding: 0 1rem;
+        gap: 0.8rem;
+        cursor: pointer;
+    }
+
+    label:hover{
+        opacity: 0.8;
     }
 
     @media (max-width: 1024px){
