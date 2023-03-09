@@ -13,7 +13,7 @@ export function AddDish(){
         const dishArray =  results.data
         const dish_id =  dishArray[dishArray.length-1].id
         
-        const fileUploadForm = await new FormData()
+        const fileUploadForm = new FormData()
         fileUploadForm.append("image", imageFile)
         api.patch(`/dishes/${dish_id}/image`, fileUploadForm)
         

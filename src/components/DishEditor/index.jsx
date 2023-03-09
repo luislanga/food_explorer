@@ -1,6 +1,7 @@
 import { Container } from "./styles"
 import { Button } from "../Button"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import upload from "../../assets/icons/SignOut.svg"
 import { TagItem } from "../TagItem"
 
@@ -12,11 +13,15 @@ export function DishEditor({createDish}){
     const [newIngredient, setNewIngredient] = useState("")
     const [categories, setCategories] = useState(["Refeições"])
     const [image, setImage] = useState(null) //recuperar imagem atual
-    const [imageFile, setImageFile] = useState(null) 
+    const [imageFile, setImageFile] = useState(null)
+    const [imageSelected, setImageSelected] = useState(false) 
+
+    const navigate = useNavigate()
 
     function handleAddIngredient(){
         setIngredients(prev => [...prev, newIngredient])
         setNewIngredient("")
+        
     }
 
     function handleDeleteIngredient(deleted){
@@ -26,10 +31,16 @@ export function DishEditor({createDish}){
     function handleChangeImage(event){
         const file = event.target.files[0]
         setImageFile(file)
+        setImageSelected(true)
+    }
+
+    async function handleSave(){
+        await createDish(name, description, price, ingredients, categories, imageFile)
+        navigate("/")
     }
 
     return(
-        <Container>
+        <Container imageSelected={imageSelected}>
             <h1 className="editorTitle">Adicionar prato</h1>
             <form>
                 <div className="inputContainer">
@@ -111,7 +122,7 @@ export function DishEditor({createDish}){
                             onChange={(e) => setDescription(e.target.value)} />
                     </div>
                 </div>
-                <Button type="button" onClick={() => createDish(name, description, price, ingredients, categories, imageFile)} className="saveButton" title="Salvar alterações" />
+                <Button type="button" onClick={handleSave} className="saveButton" title="Salvar alterações" />
             </form>
         </Container>
     )

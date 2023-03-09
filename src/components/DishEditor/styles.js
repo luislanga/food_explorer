@@ -132,7 +132,7 @@ export const Container = styled.div`
     label{
         display: flex;
         align-items: center;
-        background-color: var(--bg-dark-800);
+        background-color: ${({imageSelected}) => imageSelected ? "green" : "var(--bg-dark-800)" } ;
         height: 4.8rem;
         border-radius: 5px;
         padding: 0 1rem;
