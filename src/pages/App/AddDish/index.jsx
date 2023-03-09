@@ -10,12 +10,12 @@ export function AddDish(){
         await api.post(`/dishes/${user.id}`,{name, description, price, ingredients, categories})
 
         const results = await api.get(`/dishes?nameOrIngredient`)
-        const dishArray = await results.data
-        const dish_id = await dishArray[dishArray.length-1].id
+        const dishArray =  results.data
+        const dish_id =  dishArray[dishArray.length-1].id
         
         const fileUploadForm = await new FormData()
-        await fileUploadForm.append("image", imageFile)
-        await api.patch(`/dishes/${dish_id}/image`, fileUploadForm)
+        fileUploadForm.append("image", imageFile)
+        api.patch(`/dishes/${dish_id}/image`, fileUploadForm)
         
     }
     return(
