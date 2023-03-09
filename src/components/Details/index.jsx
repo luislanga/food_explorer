@@ -57,7 +57,9 @@ export function Details({fetchedDish}) {
                         </div> 
                     }
                     { isAdmin === 1 ? 
-                        <Button title="Editar Prato" /> : 
+                        <a href={`/editdish/${fetchedDish.id}`}>
+                            <Button className="editButton" title="Editar Prato" /> 
+                        </a> : 
                         <Button icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
                     }
                 </div>

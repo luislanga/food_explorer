@@ -63,6 +63,11 @@ export const Container = styled.div`
         }
     }
 
+    .editButton{
+        height: 3.8rem;
+        width: 12rem;
+    }
+
     .adder{
         display: flex;
         gap: 1.6rem;

@@ -88,9 +88,12 @@ export function DishCard({fetchedDish}) {
 
             {   
                 isAdmin === 1 ? 
-                    <button className="favoriteButton">
-                        <img src={pencil} alt="Favorito" />
-                    </button> :
+                    <a href={`/editdish/${fetchedDish.id}`}>
+                        <button className="favoriteButton">
+                            <img src={pencil} alt="Favorito" />
+                        </button> 
+                    </a>
+                    :
                     <button onClick={handleIsFavorite} className="favoriteButton">
                         <img src={fetchedDish.isFavorite ? heartRed : heart} alt="Favorito" />
                     </button>

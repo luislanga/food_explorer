@@ -58,6 +58,7 @@ export function DishEditor({createDish, updateDish, dish, deleteDish}){
             await updateDish(name, description, price, ingredients, categories, imageFile) :
             await createDish(name, description, price, ingredients, categories, imageFile)
         }
+        alert("Prato salvo com sucesso")
         navigate("/")
     }
 
