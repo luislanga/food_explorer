@@ -7,12 +7,13 @@ import plus from "../../assets/icons/Plus.svg"
 import heart from "../../assets/icons/Heart.svg"
 import pencil from "../../assets/icons/Pencil.svg"
 import heartRed from "../../assets/icons/HeartRed.svg"
-
+import placeholder from "../../assets/images/placeholder.png"
 
 export function DishCard({fetchedDish}) {
     const imageUrl = `${api.defaults.baseURL}/files/${fetchedDish.image}`
     const dishDetailUrl = `/details/${fetchedDish.id}`
     const [dishCount, setDishCount] = useState(1)
+    const [imageFound, setImageFound] = useState(true)
     const [toggle, setToggle] = useState(false)
     const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
     let isAdmin = 0
@@ -45,11 +46,20 @@ export function DishCard({fetchedDish}) {
 
     useEffect(()=>{},[fetchedDish.isFavorite])
 
+    async function getLink(){
+        try{
+            await api.get(imageUrl)
+        }catch(e) {
+            setImageFound(false)
+        }
+    }
+    getLink()
+
     return(
         <Container>
             <img 
                 className="dishImage" 
-                src={imageUrl} 
+                src={imageFound ? imageUrl : placeholder} 
             />
             <div id="dishTitle">
                 <a href={dishDetailUrl}>

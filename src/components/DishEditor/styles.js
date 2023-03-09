@@ -1,13 +1,6 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    h1{
-        font-family: var(--ff-main);
-        font-size: 3.2rem;
-        color: var(--tx-secondary);
-        font-weight: 500;
-        margin: 2.4rem 0 3.2rem;
-    }
 
     form{
         font-family: var(--ff-secondary);
@@ -41,6 +34,7 @@ export const Container = styled.div`
         
         >select, >input{
             height: 4.8rem;
+            font-size: 1.6rem;
             color: var(--tx-input);
             background-color: var(--bg-dark-800);
             border-radius: 5px;
@@ -82,8 +76,9 @@ export const Container = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            width: 100%;
+            height: 8px;
+            width: 8px;
+            
             >img{
                 height: .8rem;
                 width: .8rem;
@@ -115,10 +110,22 @@ export const Container = styled.div`
         color: var(--tx-input);
     }
 
-    .saveButton{
-        height: 4.8rem;
-        width: 17.2rem;
-        align-self: end;
+    .buttonsContainer{
+        display: flex;
+        justify-content: end;
+        gap: 3.2rem;
+        >button{
+            height: 4.8rem;
+            width: 17.2rem;
+        }
+    }
+
+    .deleteButton{
+        background-color: var(--bg-dark-800);
+    }
+
+    .deleteButton:hover{
+        background-color: var(--bg-button-hover);
     }
 
     .hidden{
@@ -152,11 +159,15 @@ export const Container = styled.div`
         .elementContainer{
             width: 100%;
         }
-
-        .saveButton{
+        
+        .buttonsContainer{
             width: 100%;
+            justify-content: space-around;
+
+            >button{
+                width: 100%;
+            }
         }
-
-
+        
     }
 `

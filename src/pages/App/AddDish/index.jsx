@@ -13,9 +13,11 @@ export function AddDish(){
         const dishArray =  results.data
         const dish_id =  dishArray[dishArray.length-1].id
         
-        const fileUploadForm = new FormData()
-        fileUploadForm.append("image", imageFile)
-        api.patch(`/dishes/${dish_id}/image`, fileUploadForm)
+        if(imageFile){
+            const fileUploadForm = new FormData()
+            fileUploadForm.append("image", imageFile)
+            await api.patch(`/dishes/${dish_id}/image`, fileUploadForm)
+        }
         
     }
     return(
@@ -24,6 +26,7 @@ export function AddDish(){
                 <img src={caretLeft} alt="" />
                 <h2>voltar</h2>
             </a>
+            <h1>Adicionar prato</h1>
             <DishEditor createDish={createDish} />
         </Container>
     )
