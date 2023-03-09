@@ -18,6 +18,7 @@ export function App(){
         const { innerWidth: width} = window
         return width
     }
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
 
     function useWidth(){
         const [windowWidth, setWindowWidth] = useState(getWidth())
@@ -54,7 +55,10 @@ export function App(){
                 <div className="menuContent">
                     <SearchBar />
                     <div className="menuLinks">
-                        <a href="/favorites">Meus favoritos</a>
+                        { user.id === 1 ? 
+                            <a href="/adddish">Novo prato</a> :
+                            <a href="/favorites">Meus favoritos</a>
+                        }
                         <button onClick={signOut}>Sair</button>
                     </div>
                 </div>
