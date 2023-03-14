@@ -1,24 +1,23 @@
 import { Container } from "./styles"
-import { Input } from "../../components/Input"
 import { Navbar } from "../../components/Navbar"
 import { Footer } from "../../components/Footer"
-import Close from "../../assets/icons/Close.svg"
-import search from "../../assets/icons/search.svg"
 import { useAuth } from "../../hooks/auth"
 import { Outlet } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { SearchBar } from "../../components/SearchBar"
+import Close from "../../assets/icons/Close.svg"
 
 
 export function App(){
     const [viewMenu, setViewMenu] = useState(false)
-    const width = useWidth()
     const { signOut } = useAuth()
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
+    const width = useWidth()
+
     function getWidth(){
         const { innerWidth: width} = window
         return width
     }
-    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
 
     function useWidth(){
         const [windowWidth, setWindowWidth] = useState(getWidth())

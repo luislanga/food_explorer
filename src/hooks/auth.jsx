@@ -1,10 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { api } from "../services/api"
+import CartContext from "./cart";
+
 
 export const AuthContext = createContext({})
 
 function AuthProvider({ children }){
     const [data, setData] = useState({})
+    const { resetCart } = useContext(CartContext)
 
     async function signIn({ email, password }){
         try{
@@ -29,6 +32,7 @@ function AuthProvider({ children }){
     function signOut(){
         localStorage.removeItem("@foodexplorer:user")
         localStorage.removeItem("@foodexplorer:token")
+        resetCart()
         window.location.replace("/") 
 
         setData({})

@@ -8,18 +8,22 @@ import { SearchItem } from "../SearchItem";
 import { Input } from "../../components/Input"
 import { Button } from "../Button";
 import { useAuth } from "../../hooks/auth";
+import CartContext from "../../hooks/cart";
 import { api } from "../../services/api"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
  
 export function Navbar({onClick}){
-
     let isAdmin = 0
     const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
     if(user){
         isAdmin = user.id
     }
+
     const [dishes, setDishes] = useState("")
+
     const [searchWord, setSearchWord] = useState("")
+    
+    const {items} = useContext(CartContext)
 
     useEffect(() => {
         if(searchWord !== ""){
@@ -34,8 +38,6 @@ export function Navbar({onClick}){
     },[searchWord])
 
     const { signOut } = useAuth()
-
-    const pedidos = 20
 
     return(
         <Container>
@@ -69,10 +71,12 @@ export function Navbar({onClick}){
                 <a className="favorites" href="/favorites">Meus Favoritos</a>
                 {isAdmin === 1 ? 
                     <a className="newDishButton" href="/adddish">Novo Prato</a> :
-                    <Button 
-                        title={`Pedidos (${pedidos})`}
-                        icon={receipt}
-                    />
+                    <a href="/checkout">
+                        <Button                    
+                            title={`Pedidos (${items.length})`}
+                            icon={receipt}
+                        />
+                    </a>
                 }
                 <button
                     onClick={signOut} 
@@ -85,9 +89,9 @@ export function Navbar({onClick}){
                     />
                 </button>
             </div>
-            <a href="" className="orders">
+            <a href="/checkout" className="orders">
                 <img src={receipt} alt="Pedidos" />
-                <span>10</span>
+                <span>{items.length}</span>
             </a>
         </Container>
     )

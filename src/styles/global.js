@@ -11,9 +11,12 @@ export default createGlobalStyle`
         text-decoration: none;
     }
     
-    
     &:focus{
-            outline: none;
+        outline: none;
+    }
+    
+    body{
+        background: var(--bg-dark-400);
     }
 
     :root{
@@ -58,9 +61,5 @@ export default createGlobalStyle`
         --bg-input-container: ${({theme}) => theme.DARK.DARK_900};
         --bg-ingredient: ${({theme}) => theme.LIGHT.LIGHT_600};
         --ct-outline: ${({theme}) => theme.TINTS.CAKE_100};
-    }
-    
-    body{
-        background: var(--bg-dark-400);
     }
     `

@@ -39,7 +39,6 @@ export const LogForm = styled.form`
         display: none;
     }
 
-
     >div{
         display: flex;
         flex-direction: column;
@@ -52,6 +51,7 @@ export const LogForm = styled.form`
             font-weight: 400;
             font-size: 1.6rem
         }
+
         input{
             height: 4.8rem;
         }
@@ -69,8 +69,7 @@ export const LogForm = styled.form`
         font-weight: 500;
 
         &:hover{
-            color: var(--tx-accent);
-            
+            color: var(--tx-accent); 
         }
     }
     @media (min-width: 1025px){
