@@ -6,6 +6,7 @@ import { Favorites } from "../pages/App/Favorites"
 import { AddDish } from "../pages/App/AddDish"
 import { EditDish } from "../pages/App/EditDish"
 import { OrderCheckout } from "../pages/App/OrderCheckout"
+import { OrderHistory } from "../pages/App/OrderHistory"
 
 
 export function AppRoutes(){
@@ -18,6 +19,7 @@ export function AppRoutes(){
                     <Route path="/adddish" element={<AddDish/>} />
                     <Route path="/editdish/:id" element={<EditDish/>} />
                     <Route path="/checkout" element={<OrderCheckout/>} />
+                    <Route path="/history" element={<OrderHistory/>} />
                 </Route>
             </Routes>
     )
