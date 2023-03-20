@@ -7,10 +7,13 @@ export function OrderHistory(){
 
     const [orders, setOrders] = useState("")
 
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"))
+
+    const isAdmin = user.id
+
     useEffect(() => {
         async function getOrders(){
             const results = await api.get('/orders')
-            console.log(results.data)
             setOrders(results.data)
         }
         getOrders()
@@ -21,7 +24,7 @@ export function OrderHistory(){
             <div className="orderContainer">
                 { orders && orders.map( order => {
                     return(
-                        <OrderHistoryItem key={order.id} order={order}/>
+                        <OrderHistoryItem key={order.id} order={order} isAdmin={isAdmin}/>
                     )
                 }) }
             </div>

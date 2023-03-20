@@ -78,8 +78,8 @@ export const Container = styled.nav`
             gap: 3.2rem;
             padding-right: 6rem;
             button{
-                min-width: 21.6rem;
-                max-width: 21.6rem;
+                min-width: 17.5rem;
+                max-width: 17.5rem;
                 height: 5.6rem;
             }
             input{
@@ -100,6 +100,15 @@ export const Container = styled.nav`
             font-size: 1.6rem;
             color: var(--tx-secondary);
             min-width: 12rem;
+        }
+
+        .history{
+            font-family: var(--ff-main);
+            font-weight: 400;
+            font-size: 1.6rem;
+            color: var(--tx-secondary);
+            min-width: 12rem;
+            text-align: center;
         }
         
         .searchBar{
@@ -181,5 +190,7 @@ export const Container = styled.nav`
         background-color: var(--bg-button-disabled)
     }
     }
+
+
 
 `

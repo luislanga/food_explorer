@@ -1,10 +1,10 @@
 import { Container, Tag } from "./styles"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import CartContext from "../../hooks/cart"
 import { Button } from "../Button"
 import Receipt from "../../assets/icons/Receipt.svg"
 import Plus from "../../assets/icons/Plus.svg"
 import Minus from "../../assets/icons/Minus.svg"
-import DishLarge from "../../assets/icons/DishLarge.png"
 import { api } from "../../services/api"
 
 export function Details({fetchedDish}) {
@@ -17,7 +17,9 @@ export function Details({fetchedDish}) {
     const [dishCount, setDishCount] = useState(1)
     const unitPrice = fetchedDish.price
     const currentPrice = (unitPrice*dishCount).toFixed(2).toString().replace('.',',');
-    
+
+    const {addToCart} = useContext(CartContext)
+
     function handleAdd() {
         if(dishCount < 99){
             setDishCount(prev => ++prev)
@@ -60,7 +62,7 @@ export function Details({fetchedDish}) {
                         <a href={`/editdish/${fetchedDish.id}`}>
                             <Button className="editButton" title="Editar Prato" /> 
                         </a> : 
-                        <Button icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
+                        <Button onClick={() => addToCart(fetchedDish.id, dishCount)} icon={Receipt} title={`pedir - R$ ${currentPrice}`} />
                     }
                 </div>
             </div>

@@ -7,7 +7,7 @@ import minus from "../../assets/icons/Minus.svg"
 import plus from "../../assets/icons/Plus.svg"
 import heart from "../../assets/icons/Heart.svg"
 import pencil from "../../assets/icons/Pencil.svg"
-import heartRed from "../../assets/icons/HeartRed.svg"
+import filledHeart from "../../assets/icons/filledHeart.svg"
 import placeholder from "../../assets/images/placeholder.png"
 
 export function DishCard({fetchedDish}) {
@@ -75,7 +75,7 @@ export function DishCard({fetchedDish}) {
             {
                 isAdmin === 1 ? 
                     <></> : 
-                    <div>
+                    <div className="adderContainer">
                         <div className="dishAdder">
                             <button onClick={handleSubtract}>
                                 <img src={minus} alt="Remover uma unidade" />
@@ -98,7 +98,7 @@ export function DishCard({fetchedDish}) {
                     </a>
                     :
                     <button onClick={handleIsFavorite} className="favoriteButton">
-                        <img src={fetchedDish.isFavorite ? heartRed : heart} alt="Favorito" />
+                        <img src={fetchedDish.isFavorite ? filledHeart : heart} alt="Favorito" />
                     </button>
             }
         </Container>

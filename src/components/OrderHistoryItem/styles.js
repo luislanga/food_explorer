@@ -27,4 +27,25 @@ export const Container = styled.div`
             margin-right: .8rem;
         }
     }
+
+    .statusSelector{
+        border-radius: 8px;
+        padding: 0 1.6rem;
+        height: 4.8rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        background-color: var(--bg-dark-900);
+
+        >select{
+            padding: .8rem .8rem;
+            background-color: transparent;
+            border: none;
+            color: var(--tx-secondary);
+            font-family: var(--ff-secondary);
+            font-size: 1.4rem;
+            width: 100%;
+        }
+    }
 `

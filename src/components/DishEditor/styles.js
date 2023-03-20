@@ -124,6 +124,13 @@ export const Container = styled.div`
         background-color: var(--bg-dark-800);
     }
 
+    .deleteButton:disabled{
+        background-color: var(--bg-button-disabled);
+        &:hover{
+            background-color: var(--bg-button-disabled)
+        }
+    }
+
     .deleteButton:hover{
         background-color: var(--bg-button-hover);
     }

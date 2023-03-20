@@ -26,6 +26,9 @@ export function App(){
                 setWindowWidth(getWidth())
             }
             window.addEventListener('resize', handleResize)
+            return () => {
+                document.removeEventListener("resize", handleResize);
+            }
         },[])
         return windowWidth
     }
@@ -58,6 +61,7 @@ export function App(){
                             <a href="/adddish">Novo prato</a> :
                             <a href="/favorites">Meus favoritos</a>
                         }
+                        <a href="/history">Histórico de pedidos</a>
                         <button onClick={signOut}>Sair</button>
                     </div>
                 </div>

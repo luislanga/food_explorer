@@ -60,11 +60,12 @@ export const Container = styled.div`
 
     .dishAdder{
         width: 100px;
-
         display: flex;
         align-items: center;
         justify-content: center;
         gap:1.4rem;
+
+
 
         >span{
             font-family: var(--ff-secondary);
@@ -117,6 +118,7 @@ export const Container = styled.div`
 
         #dishTitle{
             display: flex;
+            width: 107%;;
             flex-direction: row;
         }
         
@@ -153,6 +155,7 @@ export const Container = styled.div`
                 width: 9.2rem;
             }
         }
+
     }
 
 `

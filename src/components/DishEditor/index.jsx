@@ -1,6 +1,6 @@
 import { Container } from "./styles"
 import { Button } from "../Button"
-import { useState, useSyncExternalStore } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import upload from "../../assets/icons/SignOut.svg"
 import { TagItem } from "../TagItem"
@@ -8,17 +8,31 @@ import { TagItem } from "../TagItem"
 export function DishEditor({createDish, updateDish, dish, deleteDish}){
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState("")
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState("")
     const [displayCategory, setDisplayCategory] = useState([])
     const [categories, setCategories] = useState(["Refeições"])
     const [imageFile, setImageFile] = useState(null)
     const [imageSelected, setImageSelected] = useState(false)
+    const [disableButton, setDisableButton] = useState(false)
     const options = ["Refeições", "Sobremesas", "Bebidas"] 
-
     const navigate = useNavigate()
 
+    function checkFields(){
+        let formFilled
+
+        if (name !== "" &&
+        description !== "" &&
+        price !== "" &&
+        ingredients.length !== 0){
+            formFilled = true
+        }else {
+            formFilled = false
+        }
+        return formFilled
+    }
+        
     if(dish){
         useState(() => {
             function setDishValues(){
@@ -53,17 +67,24 @@ export function DishEditor({createDish, updateDish, dish, deleteDish}){
     }
 
     async function handleSave(){
+        const formFilled = checkFields()
 
-        { dish ? 
-            await updateDish(name, description, price, ingredients, categories, imageFile) :
-            await createDish(name, description, price, ingredients, categories, imageFile)
+        if(formFilled){
+            setDisableButton(true)
+            { dish ? 
+                await updateDish(name, description, price, ingredients, categories, imageFile) :
+                await createDish(name, description, price, ingredients, categories, imageFile)
+            }
+            alert("Prato salvo com sucesso")
+            navigate("/")
+            } else{
+                alert("Preencha todos os campos!")
+            }
         }
-        alert("Prato salvo com sucesso")
-        navigate("/")
-    }
 
     async function handleDelete(){
         if (confirm("Tem certeza que deseja excluir o prato?")){
+            setDisableButton(true)
             await deleteDish()
             navigate("/")
         }
@@ -164,8 +185,8 @@ export function DishEditor({createDish, updateDish, dish, deleteDish}){
                     </div>
                 </div>
                 <div className="buttonsContainer">
-                    {dish && <Button type="button" onClick={handleDelete} className="deleteButton" title="Excluir prato"/>}
-                    <Button type="button" onClick={handleSave} className="saveButton" title={dish ? "Salvar alterações" : "Adicionar prato"} />
+                    {dish && <Button disabled={disableButton} type="button" onClick={handleDelete} className="deleteButton" title="Excluir prato"/>}
+                    <Button disabled={disableButton} type="button" onClick={handleSave} className="saveButton" title={dish ? "Salvar alterações" : "Adicionar prato"} />
                 </div>
             </form>
         </Container>

@@ -60,6 +60,8 @@ export const Container = styled.div`
 
     .menuLinks, >button{
         margin-top: 3.6rem;
+        display: flex;
+        flex-direction: column;
         >button{
             font-family: var(--ff-main);
             color: var(--tx-secondary);

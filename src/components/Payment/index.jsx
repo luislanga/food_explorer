@@ -5,6 +5,7 @@ import pix from "../../assets/icons/pix.svg"
 import creditCard from "../../assets/icons/CreditCard.svg"
 import qr from "../../assets/icons/qrcode.png"
 import { useState, useContext } from "react"
+import clock from "../../assets/images/Clock.svg"
 import CartContext from "../../hooks/cart"
 
 export function Payment(){
@@ -19,8 +20,6 @@ export function Payment(){
     const quantities = cartItems.map(item => {
         return(item.quantity)
     })
-    console.log(quantities)
-    
 
     function handleClickPix(){
         setPixActive(true)
@@ -34,9 +33,11 @@ export function Payment(){
     }
 
     async function simulatePayment(){
+
+        setIsPaid(true)
         await api.post("/orders", {orderDishes: {dishes, quantities}})
         resetCart()
-        setIsPaid(true)
+        window.location.href = '/history';
 
     }
     return(
@@ -44,6 +45,7 @@ export function Payment(){
             <h2 className="paymentTitle">Pagamento</h2>
             { isPaid ?
                 <>
+                    <img className="loadingPayment" src={clock} alt=""/>
                 </> :
                 <div className="paymentContainer">
                     <div className="paymentMethodSelector">

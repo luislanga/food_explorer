@@ -18,4 +18,12 @@ export const Container = styled.div`
         flex-direction: column;
         gap: 1.7rem;
     }
+
+    @media (max-width: 1025px){
+        padding: 1.7rem 3.5rem;
+        
+        .orderContainer{
+            align-items: center;
+        }
+    }
 `

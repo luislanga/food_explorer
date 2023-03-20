@@ -12,11 +12,16 @@ export function SignUp(){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [disableButton, setDisableButton] = useState(false)
 
     function handleSignUp(){
         if(!name || !email || !password) {
             return alert("Preencha todos os campos!")
         }
+        if(password.length < 6){
+            return alert("A senha precisa ter no mínimo 6 caracteres")
+        }
+        setDisableButton(true)
         api.post("/users", {name, email, password, is_admin: 0})
             .then(() => {
                 alert("Usuário cadastrado com sucesso")
@@ -43,13 +48,13 @@ export function SignUp(){
                 </div>
                 <div>
                     <h2>Email</h2>
-                    <Input onChange={e => setEmail(e.target.value)} type="email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
+                    <Input required onChange={e => setEmail(e.target.value)} type="email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
                 </div>
                 <div>
                     <h2>Senha</h2>
                     <Input onChange={e => setPassword(e.target.value)} type="password" placeholder="No mínimo 6 caracteres"/>
                 </div>
-                <Button type="button" onClick={handleSignUp} title="Cadastrar"/>
+                <Button disabled={disableButton} onClick={handleSignUp} title="Cadastrar"/>
                 <Link to="/">Já tenho uma conta</Link>
             </LogForm>
         </Container>

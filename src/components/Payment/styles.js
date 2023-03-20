@@ -51,6 +51,13 @@ export const Container = styled.div`
         }
     }
 
+    .loadingPayment{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        opacity: 0.8;
+    }
+
     .qrContainer{
         min-width: 45rem;
         height: 36.4rem;
