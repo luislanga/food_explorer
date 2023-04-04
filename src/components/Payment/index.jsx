@@ -1,7 +1,7 @@
 import { Container } from "./styles"
 import { Button } from "../Button"
 import { api } from "../../services/api"
-import pix from "../../assets/icons/pix.svg"
+import pix from "../../assets/icons/PIX.svg"
 import creditCard from "../../assets/icons/CreditCard.svg"
 import qr from "../../assets/icons/qrcode.png"
 import { useState, useContext } from "react"
