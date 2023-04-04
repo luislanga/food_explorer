@@ -30,10 +30,10 @@ export function SignIn(){
     }
     
     useEffect(() => {
-        const keyDownHandler = event => {
+        const keyDownHandler = async event => {
           if (event.key === 'Enter') {
             event.preventDefault()
-            handleSignIn()
+            await handleSignIn()
           }
         }
         document.addEventListener('keydown', keyDownHandler)

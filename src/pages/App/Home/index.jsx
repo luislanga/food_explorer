@@ -15,6 +15,7 @@ export function Home(){
         async function getFavorites(){
             const results = await api.get(`favorites/${user.id}`)
             setFavorites(results.data)
+            console.log(user.is_admin)
         }
         getFavorites()
     },[])
